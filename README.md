@@ -19,3 +19,11 @@ The challenge is a simple string defined by the client and the server must respo
 ## What i'm doing?
 
 A client and a daemon with that concept
+
+## What does the daemon?
+
+Initialize under the same domain the services listed in the configuration file with an additional port where customers can send their challenge to verify the identity of the author of the services provided by the domain
+
+## What does the client?
+
+Loads the service's public key and sends a challenge to the domain to identify the author of the services provided
