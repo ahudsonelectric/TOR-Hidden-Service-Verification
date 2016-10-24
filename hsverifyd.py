@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 import argparse
+from hsverifyd.ConfigLoader import Config
 
 __application__ = "hsverifyd"
 __version__ = "0.1.0"
@@ -15,6 +16,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if args.start:
+        conf = Config()
         pass
     elif args.stop:
         pass

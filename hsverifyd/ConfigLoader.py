@@ -1,32 +1,36 @@
 import ConfigParser
-import os.path
+import json
 from sys import exit
 
 
 class Config:
     _config_file = '/etc/hsverifyd.conf'
-    _log = None
 
-    port = None
-    run_as = None
+    _challenge_port = None
+    _hidden_services = None
+    _run_as = None
+    _server_password = None
 
-    def __init__(self, log):
-        self._log = log
-        self._check_conf_file()
-        self._load()
-
-    def _check_conf_file(self):
-        if not os.path.isfile(self._config_file):
-            self._log.error("File " + self._config_file + " does not exist")
-            exit(2)
-
-    def _load(self):
+    def __init__(self):
         config = ConfigParser.ConfigParser()
         config.readfp(open(self._config_file))
         try:
-            self.port = config.getint('network', 'port')
-            self.run_as = config.get('system', 'run_as')
+            self._challenge_port = config.getint('network', 'challenge_port')
+            self._hidden_services = json.loads(config.get('network', 'hidden_services'))
+            self._server_password = config.get('network', 'tor_password')
+            self._run_as = config.get('system', 'run_as')
         except ConfigParser.NoOptionError:
-            self._log.error("Error reading config file.")
+            print "Error reading config file."
             exit(2)
 
+    def challenge_port(self):
+        return self._challenge_port
+
+    def hidden_services(self):
+        return self._hidden_services
+
+    def run_as(self):
+        return self._run_as
+
+    def server_password(self):
+        return self._server_password
