@@ -1,0 +1,41 @@
+#!/bin/sh
+
+### BEGIN INIT INFO
+# Provides:        hsverifyd
+# Required-Start:  $network $remote_fs $syslog
+# Required-Stop:   $network $remote_fs $syslog
+# Default-Start:   2 3 4 5
+# Default-Stop:    1
+# Short-Description: Start hsverifyd daemon
+### END INIT INFO
+
+PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin
+
+. /lib/lsb/init-functions
+
+DAEMON=/usr/local/sbin/hsverifyd
+PID=/var/run/hsverifyd.pid
+
+test -x $DAEMON || exit 5
+
+case $1 in
+        start)
+                log_daemon_msg "Starting hsverifyd daemon" "Megadld"
+                test -e $PID && log_daemon_msg "hsverifyd pid exist??" && rm $PID
+                exec $DAEMON --start
+                log_end_msg 0
+                ;;
+        stop)
+                log_daemon_msg "Stopping hsverifyd daemon" "hsverifyd"
+                exec $DAEMON --stop
+                log_end_msg 0
+                ;;
+        restart)
+                log_daemon_msg "Restart hsverifyd daemon" "hsverifyd"
+                $DAEMON --restart
+                ;;
+        *)
+                echo "Usage: $0 {start|stop|restart}"
+                exit 2
+                ;;
+esac
