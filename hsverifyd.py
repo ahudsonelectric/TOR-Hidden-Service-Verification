@@ -9,9 +9,9 @@ __author__ = "Juan Ezquerro LLanes"
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('--start', '-s', help='Start Server', action="store_true")
-    parser.add_argument('--stop', '-k', help='Stop Server', action="store_true")
-    parser.add_argument('--restart', '-r', help='Restart Server', action="store_true")
+    parser.add_argument('--start', help='Start Server', action="store_true")
+    parser.add_argument('--stop', help='Stop Server', action="store_true")
+    parser.add_argument('--restart', help='Restart Server', action="store_true")
     args = parser.parse_args()
 
     if args.start:
