@@ -1,7 +1,7 @@
 import socket
 from sys import exit
 
-from Challenge import ChallengeThread
+from hsverifyd.Challenge import ChallengeThread
 
 
 class Server():

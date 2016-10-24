@@ -1,7 +1,8 @@
 #!/usr/bin/python
 
 import argparse
-from hsverifyd.ConfigLoader import Config
+
+from hsverifyd.Daemonize import Daemonize
 
 __application__ = "hsverifyd"
 __version__ = "0.1.0"
@@ -15,12 +16,13 @@ if __name__ == "__main__":
     parser.add_argument('--restart', help='Restart Server', action="store_true")
     args = parser.parse_args()
 
+    daemon = Daemonize()
+
     if args.start:
-        conf = Config()
-        pass
+        daemon.start()
     elif args.stop:
-        pass
+        daemon.stop()
     elif args.restart:
-        pass
+        daemon.restart()
     else:
         parser.print_help()

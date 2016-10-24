@@ -5,7 +5,9 @@ import sys
 import time
 from signal import SIGTERM
 
-from Server import Server
+from hsverifyd.ConfigLoader import Config
+from hsverifyd.LogWriter import Logger
+from hsverifyd.Server import Server
 
 
 class Daemonize:
@@ -16,9 +18,9 @@ class Daemonize:
     _log = None
     _config = None
 
-    def __init__(self, log, config):
-        self._log = log
-        self._config = config
+    def __init__(self):
+        self._log = Logger()
+        self._config = Config()
 
     def daemonize(self):
         # close log at exit
