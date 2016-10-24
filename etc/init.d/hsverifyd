@@ -20,7 +20,7 @@ test -x $DAEMON || exit 5
 
 case $1 in
         start)
-                log_daemon_msg "Starting hsverifyd daemon" "Megadld"
+                log_daemon_msg "Starting hsverifyd daemon" "hsverifyd"
                 test -e $PID && log_daemon_msg "hsverifyd pid exist??" && rm $PID
                 exec $DAEMON --start
                 log_end_msg 0
