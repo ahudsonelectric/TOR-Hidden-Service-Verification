@@ -1,3 +1,4 @@
+import os.path
 import sys
 
 from hsverifyd.ConfigLoader import Config
@@ -17,18 +18,19 @@ class JsonAuth:
             self._log.close()
             sys.exit(1)
 
-        # Create the url service if not exists yet
-        self._hs.set_own(self._config.challenge_port())
+        file = self._hs.get_data_dir() + "/hostname"
 
-        dir = self._hs.get_data_dir() + "/hostname"
+        # Create the url service if not exists yet
+        if not os.path.isfile(file):
+            self._hs.set_own(self._config.challenge_port())
+            self._hs.remove_own()
 
         try:
-            with open(dir, 'r') as hostname:
+            with open(file, 'r') as hostname:
                 host = hostname.read().replace('\n', '')
         except IOError:
-            self._log.error("No such file or directory: " + dir)
+            self._log.error("No such file or directory: " + file)
             self._log.close()
-            self._hs.remove_own()
             self._hs.close()
             sys.exit(1)
 
