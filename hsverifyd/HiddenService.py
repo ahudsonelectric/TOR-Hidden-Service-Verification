@@ -39,10 +39,8 @@ class HiddenService:
         self._controller.create_hidden_service(self.get_data_dir(), 111, target_port=challenge_port)
 
     def bind(self, hidden_services):
-        hidden_service_dir = self.get_data_dir()
         for service in hidden_services:
             self._controller.create_hidden_service(self.get_data_dir(), service[1], target_port=service[0])
-        self.close()
 
     def close(self):
         self._controller.close()
