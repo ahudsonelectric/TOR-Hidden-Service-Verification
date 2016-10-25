@@ -46,6 +46,8 @@ Browser extension for auto verify site mirrors:
 - The client accepts the data offered from the service to identify mirrors in the future , just clicking on extension icon
 - Next time the client go into a service who claims to be a mirror of the original one the extension uses the stored info to advice the client if is realy true or if it is scam
 
+And a way to automatically maintain a list of trusted mirrors for help user to reconnect if one mirror is offline
+
 ## Be a contributor:
 
 A project like this is very hard in terms of amount of work so if you think that project is something good for the community feel free to collaborate with code or with BTC.
