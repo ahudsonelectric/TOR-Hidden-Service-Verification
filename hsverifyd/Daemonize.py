@@ -24,7 +24,7 @@ class Daemonize:
 
     def daemonize(self):
         # close log at exit
-        atexit.register(self._log.close())
+        atexit.register(self._log.close)
 
         # do the UNIX double-fork magic
         try:
@@ -63,9 +63,9 @@ class Daemonize:
 
         # get user data
         try:
-            user = pwd.getpwnam(self._config.run_as)
+            user = pwd.getpwnam(self._config.run_as())
         except KeyError:
-            self._log.error("user does not exists: %s" % self._config.run_as)
+            self._log.error("user does not exists: %s" % self._config.run_as())
             sys.exit(1)
 
         # write pidfile
@@ -142,7 +142,7 @@ class Daemonize:
 
     def run(self):
         # TODO: hacer server atributo para gestionar el stop y restart
-        server = Server(self._log, self._config)
+        server = Server(self._log, self._config.challenge_port())
         server.run()
         for t in server.threads:
             t.join()
