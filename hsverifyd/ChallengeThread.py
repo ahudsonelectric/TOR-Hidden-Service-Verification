@@ -5,11 +5,9 @@ from threading import Thread
 
 class ChallengeThread(Thread):
     _conn = None
-    _config = None
 
-    def __init__(self, conn, config):
+    def __init__(self, conn):
         Thread.__init__(self)
-        self._config = config
         self._conn = conn
 
     def run(self):
