@@ -41,9 +41,8 @@ class HiddenService:
     def bind(self, hidden_services):
         hidden_service_dir = self.get_data_dir()
         for service in hidden_services:
-            self._controller.create_hidden_service(hidden_service_dir, service[1], target_port=service[0])
+            self._controller.create_hidden_service(self.get_data_dir(), service[1], target_port=service[0])
         self.close()
-        return hidden_service_dir
 
     def close(self):
         self._controller.close()
