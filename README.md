@@ -34,11 +34,10 @@ In short:
 
 - Client send: json(hello)
 - Server response: json(gpg_key_id)
-- Client process: do preliminary checks against his db 
-- Client process: can stop here if don't trust the site or if is all ok maybe wants to accepts the id
+- Client process: do preliminary checks against his db, can stop here if don't trust the site or if is all ok maybe wants to accepts the id
 - Client send: ask for signed challenge
 - Server response: signed_block(json(true_domain))
-- Client: If signature is ok the true_domain should be the right one...it match?
+- Client process: If signature is ok the true_domain should be the right one...it match?
 
 ## Future:
 
