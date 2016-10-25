@@ -17,8 +17,18 @@ class JsonAuth:
             self._log.close()
             sys.exit(1)
 
-        with open(self._hs.get_data_dir() + "/hsverifyd.signed", 'r') as hostname:
-            host = hostname.read().replace('\n', '')
+        dir = self._hs.get_data_dir() + "/hostname"
+
+        try:
+            with open(dir, 'r') as hostname:
+                host = hostname.read().replace('\n', '')
+        except IOError:
+            self._log.error("No such file or directory: " + dir)
+            self._log.close()
+            self._hs.remove_own()
+            self._hs.close()
+            sys.exit(1)
+
         self._log.close()
         self._hs.remove_own()
         self._hs.close()
