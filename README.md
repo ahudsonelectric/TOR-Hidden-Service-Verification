@@ -32,4 +32,4 @@ In short:
 
 - Client send: json(rand_string)
 - Server response: signed_block(json(rand_string,true_domain))
-- Client: If signature is ok, and the rand_strings are the same the true_domain is the right one...it match?
+- Client: If signature is ok and the rand_strings are the same the true_domain is the right one...it match?
