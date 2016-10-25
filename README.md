@@ -26,6 +26,8 @@ Initialize under the same domain the services listed in the configuration file w
 
 Loads the service's public key and sends a challenge to the domain to identify the author of the services provided
 
+Python client is just a POC
+
 ## How does the challenge look?
 
 In short:
