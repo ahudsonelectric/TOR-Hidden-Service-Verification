@@ -25,7 +25,6 @@ class Daemonize:
         self._log = Logger()
         self._config = Config()
         self._hs = HiddenService(self._log)
-        self._server = Server(self._log, self._config.challenge_port())
 
     def daemonize(self):
         # close log at exit
@@ -146,9 +145,13 @@ class Daemonize:
         self.start()
 
     def run(self):
+        # Start hidden services
         if not self._hs.connect(self._config.server_password()):
             sys.exit(1)
-        self._hs.bind(self._config.hidden_services(), self._config.challenge_port())
+        path = self._hs.bind(self._config.hidden_services(), self._config.challenge_port())
+        self._config.set_gpgring(path)
+        # Run auth server
+        self._server = Server(self._log, self._config)
         self._server.run()
         for t in self._server.threads:
             t.join()

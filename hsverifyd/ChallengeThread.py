@@ -1,14 +1,19 @@
-import gnupg
 import json
 from threading import Thread
+
+import gnupg
 
 
 class ChallengeThread(Thread):
     _conn = None
+    _config = None
+    _gpg = None
 
-    def __init__(self, conn):
+    def __init__(self, conn, config):
         Thread.__init__(self)
         self._conn = conn
+        self._config = config
+        self._gpg = gnupg.GPG(gnupghome=self._config.gpgring())
 
     def run(self):
         # Get data from client

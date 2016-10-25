@@ -10,6 +10,8 @@ class Config:
     _hidden_services = None
     _run_as = None
     _server_password = None
+    _email = None
+    _gpgring = None
 
     def __init__(self):
         config = ConfigParser.ConfigParser()
@@ -19,6 +21,7 @@ class Config:
             self._hidden_services = json.loads(config.get('network', 'hidden_services'))
             self._server_password = config.get('network', 'tor_password')
             self._run_as = config.get('system', 'run_as')
+            self._email = config.get('gpg', 'email')
         except ConfigParser.NoOptionError:
             print "Error reading config file."
             exit(2)
@@ -34,3 +37,12 @@ class Config:
 
     def server_password(self):
         return self._server_password
+
+    def email(self):
+        return self._email
+
+    def set_gpgring(self, path):
+        self._gpgring = path
+
+    def gpgring(self, path):
+        return self._gpgring

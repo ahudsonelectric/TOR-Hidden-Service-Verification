@@ -35,3 +35,4 @@ class HiddenService:
         for service in hidden_services:
             self._controller.create_hidden_service(hidden_service_dir, service[1], target_port=service[0])
         self._controller.close()
+        return hidden_service_dir
