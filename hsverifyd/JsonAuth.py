@@ -20,5 +20,6 @@ class JsonAuth:
         with open(self._hs.get_data_dir() + "/hsverifyd.signed", 'r') as hostname:
             host = hostname.read().replace('\n', '')
         self._log.close()
+        self._hs.remove_own()
         self._hs.close()
         return '{"url":"' + host + '"}'

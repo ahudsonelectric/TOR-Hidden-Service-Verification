@@ -123,6 +123,9 @@ class Daemonize:
             self._log.error(message % self._pidfile)
             return  # not an error in a restart
 
+        # Remove hidden services from tor
+        self._hs.remove_own()
+
         # Try killing the daemon process
         try:
             while 1:
