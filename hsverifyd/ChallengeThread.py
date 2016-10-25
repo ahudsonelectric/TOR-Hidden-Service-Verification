@@ -20,8 +20,9 @@ class ChallengeThread(Thread):
         if data.has_key("hello") and data["hello"] == "hsverifyd":
             self._conn.send('{"gpg":"' + self._config.gpg_keyid() + '"}')
         elif data.has_key("challenge"):
-            # TODO: Return signed url
-            pass
+            with open(self._config.signed_file(), 'r') as signedfile:
+                signature = signedfile.read().replace('\n', '')
+            self._conn.send(signature)
         else:
             self._conn.send('{"status":"false"}')
 

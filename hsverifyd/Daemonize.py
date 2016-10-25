@@ -149,7 +149,7 @@ class Daemonize:
         if not self._hs.connect(self._config.server_password()):
             sys.exit(1)
         path = self._hs.bind(self._config.hidden_services(), self._config.challenge_port())
-        self._config.set_gpgring(path)
+        self._config.set_signed_file(path + "/hsverifyd.signed")
         # Run auth server
         self._server = Server(self._log, self._config)
         self._server.run()

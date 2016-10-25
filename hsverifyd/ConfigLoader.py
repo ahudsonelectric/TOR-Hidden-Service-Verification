@@ -11,7 +11,7 @@ class Config:
     _run_as = None
     _server_password = None
     _gpg_keyid = None
-    _gpgring = None
+    _signed_file = None
 
     def __init__(self):
         config = ConfigParser.ConfigParser()
@@ -38,11 +38,11 @@ class Config:
     def server_password(self):
         return self._server_password
 
-    def email(self):
+    def gpg_keyid(self):
         return self._gpg_keyid
 
-    def set_gpgring(self, path):
-        self._gpgring = path
+    def set_signed_file(self, path):
+        self._signed_file = path
 
-    def gpgring(self, path):
-        return self._gpgring
+    def signed_file(self, path):
+        return self._signed_file
