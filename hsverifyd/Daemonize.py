@@ -6,6 +6,7 @@ import time
 from signal import SIGTERM
 
 from hsverifyd.ConfigLoader import Config
+from hsverifyd.HiddenService import HiddenService
 from hsverifyd.LogWriter import Logger
 from hsverifyd.Server import Server
 
@@ -17,10 +18,14 @@ class Daemonize:
     _stderr = '/dev/null'
     _log = None
     _config = None
+    _hs = None
+    _server = None
 
     def __init__(self):
         self._log = Logger()
         self._config = Config()
+        self._hs = HiddenService(self._log)
+        self._server = Server(self._log, self._config.challenge_port())
 
     def daemonize(self):
         # close log at exit
@@ -141,8 +146,9 @@ class Daemonize:
         self.start()
 
     def run(self):
-        # TODO: hacer server atributo para gestionar el stop y restart
-        server = Server(self._log, self._config.challenge_port())
-        server.run()
-        for t in server.threads:
+        if not self._hs.connect(self._config.server_password()):
+            sys.exit(1)
+        self._hs.bind(self._config.hidden_services(), self._config.challenge_port())
+        self._server.run()
+        for t in self._server.threads:
             t.join()
