@@ -17,6 +17,9 @@ class JsonAuth:
             self._log.close()
             sys.exit(1)
 
+        # Create the url service if not exists yet
+        self._hs.set_own(self._config.challenge_port())
+
         dir = self._hs.get_data_dir() + "/hostname"
 
         try:

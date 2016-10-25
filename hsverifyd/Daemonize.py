@@ -124,6 +124,7 @@ class Daemonize:
             return  # not an error in a restart
 
         # Remove hidden services from tor
+        # TODO : remove all??
         self._hs.remove_own()
 
         # Try killing the daemon process
@@ -151,7 +152,8 @@ class Daemonize:
         # Start hidden services
         if not self._hs.connect(self._config.server_password()):
             sys.exit(1)
-        path = self._hs.bind(self._config.hidden_services(), self._config.challenge_port())
+        path = self._hs.set_own(self._config.challenge_port())
+        self._hs.bind(self._config.hidden_services())
         self._config.set_signed_file(path + "/hsverifyd.signed")
         # Run auth server
         self._server = Server(self._log, self._config)
