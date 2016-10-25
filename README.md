@@ -45,3 +45,9 @@ Browser extension for auto verify site mirrors:
 - The extension notes the client about that site is running hidden service verification
 - The client accepts the data offered from the service to identify mirrors in the future , just clicking on extension icon
 - Next time the client go into a service who claims to be a mirror of the original one the extension uses the stored info to advice the client if is realy true or if it is scam
+
+## Be a contributor:
+
+A project like this is very hard in terms of amount of work so if you think that project is something good for the community feel free to collaborate with code or with BTC.
+
+Wallet: 1KUDR3ebaHUss8gjbx5vCqJ2m9LmC9EbRj
