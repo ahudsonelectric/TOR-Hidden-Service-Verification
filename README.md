@@ -41,6 +41,10 @@ In short:
 - The client accepts the data offered from the service to identify mirrors in the future , just clicking on extension icon
 - Next time the client go into a service who claims to be a mirror of the original one the extension uses the stored info to advice the client if is realy true or if it is scam
 
+Supported browsers:
+
+* [Firefox Add-on](https://github.com/arrase/HSVerify-Firefox)
+
 ## Future:
 
 A way to automatically maintain a list of trusted mirrors for help user to reconnect if one mirror is offline
