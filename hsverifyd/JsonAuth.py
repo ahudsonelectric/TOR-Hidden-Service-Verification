@@ -25,16 +25,15 @@ class JsonAuth:
             self._hs.set_own(self._config.challenge_port())
             self._hs.remove_own()
 
+        self._hs.close()
+
         try:
             with open(file, 'r') as hostname:
                 host = hostname.read().replace('\n', '')
         except IOError:
             self._log.error("No such file or directory: " + file)
             self._log.close()
-            self._hs.close()
             sys.exit(1)
 
         self._log.close()
-        self._hs.remove_own()
-        self._hs.close()
         return '{"url":"' + host + '"}'
