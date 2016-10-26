@@ -20,11 +20,13 @@ if __name__ == "__main__":
     parser.add_argument('--json', help='Echo auth string to be signed', action="store_true")
     args = parser.parse_args()
 
+    # Print the json string to be signed
     if args.json:
         auth = JsonAuth()
         print auth.get()
         sys.exit(0)
 
+    # Daemon manager
     daemon = Daemonize()
 
     if args.start:
