@@ -36,4 +36,5 @@ class JsonAuth:
             sys.exit(1)
 
         self._log.close()
+
         return '{"url":"' + host + '"}'
