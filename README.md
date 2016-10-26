@@ -16,17 +16,11 @@ The client who wants to verify if a service is fake or real can download the PGP
 
 ## What i'm doing?
 
-A client and a daemon with that concept
+A browser add-on and a daemon with that concept
 
 ## How does the daemon work?
 
 Initialize under the same domain the services listed in the configuration file with an additional port where customers can send their challenge to verify the identity of the author of the services provided by the domain
-
-## How does the client work?
-
-Loads the service's public key and sends a challenge to the domain to identify the author of the services provided
-
-Python client is just a POC
 
 ## How does the challenge look?
 
@@ -39,9 +33,7 @@ In short:
 - Server response: signed_block(json(true_domain))
 - Client process: If signature is ok the true_domain should be the right one...it match?
 
-## Future:
-
-Browser extension for auto verify site mirrors:
+## How does the browser add-on work?
 
 - The client go into a domain for first time
 - The client decided than that service is good for him and he would like to know in the future if a mirror of the service is from the same author
@@ -49,7 +41,9 @@ Browser extension for auto verify site mirrors:
 - The client accepts the data offered from the service to identify mirrors in the future , just clicking on extension icon
 - Next time the client go into a service who claims to be a mirror of the original one the extension uses the stored info to advice the client if is realy true or if it is scam
 
-And a way to automatically maintain a list of trusted mirrors for help user to reconnect if one mirror is offline
+## Future:
+
+A way to automatically maintain a list of trusted mirrors for help user to reconnect if one mirror is offline
 
 ## Be a contributor:
 
