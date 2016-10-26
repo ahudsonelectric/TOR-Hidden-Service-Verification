@@ -20,7 +20,7 @@ class JsonAuth:
 
         file = self._hs.get_data_dir() + "/hostname"
 
-        # Create the service url if not exists yet
+        # Create the service url if not exists
         if not os.path.isfile(file):
             self._hs.set_own(self._config.challenge_port())
             self._hs.remove_own()
