@@ -5,7 +5,6 @@ from threading import Thread
 class ChallengeThread(Thread):
     _conn = None
     _config = None
-    _gpg = None
 
     def __init__(self, conn, config):
         Thread.__init__(self)
