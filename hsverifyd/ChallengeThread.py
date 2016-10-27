@@ -7,8 +7,7 @@ class ChallengeThread(BaseHTTPRequestHandler):
     signed_file_path = None
 
     def do_POST(self):
-        # Default response
-        response = '{"status":"false"}'
+
 
         # Get data from client
         with self.rfile as query:
@@ -17,14 +16,22 @@ class ChallengeThread(BaseHTTPRequestHandler):
         data = json.loads(json_data)
 
         self.send_response(200)
+        self.send_header('Content-type', "application/json")
         self.end_headers()
 
-        # Check valid json
+        # If request is challenge
+        if data.has_key("challenge"):
+            f = open(self.signed_file_path)
+            self.wfile.write(f.read())
+            f.close()
+            return
+
+        # If request is Unknown
+        response = '{"status":"false"}'
+
+        # If request is HELLO
         if data.has_key("hello") and data["hello"] == "hsverifyd":
             response = '{"gpg":"' + self.gpg_keyid + '"}'
-        elif data.has_key("challenge"):
-            with open(self.signed_file_path, 'r') as signedfile:
-                response = signedfile.read().replace('\n', '')
 
         self.wfile.send(response)
 
