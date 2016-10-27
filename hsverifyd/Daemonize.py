@@ -3,12 +3,13 @@ import os
 import pwd
 import sys
 import time
+from BaseHTTPServer import HTTPServer
 from signal import SIGTERM
 
+from hsverifyd.ChallengeThread import ChallengeThread
 from hsverifyd.ConfigLoader import Config
 from hsverifyd.HiddenService import HiddenService
 from hsverifyd.LogWriter import Logger
-from hsverifyd.Server import Server
 
 
 class Daemonize:
@@ -157,9 +158,16 @@ class Daemonize:
         self._hs.set_own(self._config.challenge_port())
         self._hs.bind(self._config.hidden_services())
         self._hs.close()
-        self._config.set_signed_file(self._hs.get_data_dir() + "/hsverifyd.signed")
+
+        # Setup class
+        ChallengeThread.gpg_keyid = self._config.gpg_keyid()
+        ChallengeThread.signed_file_path = self._hs.get_data_dir() + "/hsverifyd.signed"
+
         # Run auth server
-        self._server = Server(self._log, self._config)
-        self._server.run()
-        for t in self._server.threads:
-            t.join()
+        try:
+            self._server = HTTPServer(('127.0.0.1', self._config.challenge_port()), ChallengeThread)
+            # Wait forever for incoming htto requests
+            self._server.serve_forever()
+        except:
+            self._log.error("There was an error when trying to bind the server")
+            exit(2)
