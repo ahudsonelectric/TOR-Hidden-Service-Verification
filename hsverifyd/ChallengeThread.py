@@ -7,8 +7,6 @@ class ChallengeThread(BaseHTTPRequestHandler):
     signed_file_path = None
 
     def do_POST(self):
-
-
         # Get data from client
         with self.rfile as query:
             json_data = query.read().replace('\n', '')
