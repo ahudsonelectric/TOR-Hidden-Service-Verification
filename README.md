@@ -1,4 +1,4 @@
-# TOR Hidden Service Verification
+# TOR Hidden Service Verification (Daemon)
 
 ### ...WORK IN PROGRESS
 
