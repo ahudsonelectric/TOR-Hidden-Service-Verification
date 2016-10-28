@@ -30,7 +30,7 @@ class HiddenService:
         return True
 
     def get_data_dir(self):
-        return os.path.join(self._controller.get_conf('DataDirectory', '/tmp'), 'hsverifyd')
+        return os.path.join(self._controller.get_conf('DataDirectory', '/tmp'), 'HSVerifyd')
 
     def remove_own(self):
         self._controller.remove_hidden_service(self.get_data_dir(), 111)

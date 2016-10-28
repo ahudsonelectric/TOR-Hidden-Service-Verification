@@ -28,7 +28,7 @@ class ChallengeThread(BaseHTTPRequestHandler):
         response = '{"status":"false"}'
 
         # If request is HELLO
-        if data.has_key("hello") and data["hello"] == "hsverifyd":
+        if data.has_key("hello") and data["hello"] == "HSVerifyd":
             response = '{"gpg":"' + self.gpg_keyid + '"}'
 
         self.wfile.send(response)

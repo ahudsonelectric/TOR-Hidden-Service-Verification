@@ -6,14 +6,14 @@ import time
 from BaseHTTPServer import HTTPServer
 from signal import SIGTERM
 
-from hsverifyd.ChallengeThread import ChallengeThread
-from hsverifyd.ConfigLoader import Config
-from hsverifyd.HiddenService import HiddenService
-from hsverifyd.LogWriter import Logger
+from HSVerifyd.ChallengeThread import ChallengeThread
+from HSVerifyd.ConfigLoader import Config
+from HSVerifyd.HiddenService import HiddenService
+from HSVerifyd.LogWriter import Logger
 
 
 class Daemonize:
-    _pidfile = '/var/run/hsverifyd.pid'
+    _pidfile = '/var/run/HSVerifyd.pid'
     _stdin = '/dev/null'
     _stdout = '/dev/null'
     _stderr = '/dev/null'
@@ -159,9 +159,13 @@ class Daemonize:
         self._hs.bind(self._config.hidden_services())
         self._hs.close()
 
+        if not os.path.isfile(self._hs.get_data_dir() + "/HSVerifyd.asc"):
+            self._log.error("Signature file does not exists")
+            exit(2)
+
         # Setup class
         ChallengeThread.gpg_keyid = self._config.gpg_keyid()
-        ChallengeThread.signed_file_path = self._hs.get_data_dir() + "/hsverifyd.signed"
+        ChallengeThread.signed_file_path = self._hs.get_data_dir() + "/HSVerifyd.asc"
 
         # Run auth server
         try:

@@ -12,5 +12,5 @@ class Logger:
         syslog.syslog(syslog.LOG_ERR, message)
 
     def close(self):
-        syslog.syslog(syslog.LOG_INFO, 'Closing hsverifyd')
+        syslog.syslog(syslog.LOG_INFO, 'Closing HSVerifyd')
         syslog.closelog()

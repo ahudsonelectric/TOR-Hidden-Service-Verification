@@ -4,7 +4,7 @@ from sys import exit
 
 
 class Config:
-    _config_file = '/etc/hsverifyd.conf'
+    _config_file = '/etc/HSVerifyd.conf'
 
     _challenge_port = None
     _hidden_services = None
