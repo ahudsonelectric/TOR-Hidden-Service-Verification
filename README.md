@@ -28,9 +28,9 @@ In short:
 
 - Client send: json(hello)
 - Server response: json(gpg_key_id)
-- Client process: do preliminary checks against his db, can stop here if don't trust the site or if is all ok maybe wants to accepts the id
+- Client process: do preliminary checks against his db, can stop here if don't trust the site
 - Client send: ask for signed challenge
-- Server response: signed_block(json(true_domain))
+- Server response: signed_block(true_domain)
 - Client process: If signature is ok the true_domain should be the right one...it match?
 
 ## How does the browser add-on work?
@@ -41,7 +41,7 @@ In short:
 - The client accepts the data offered from the service to identify mirrors in the future , just clicking on extension icon
 - Next time the client go into a service who claims to be a mirror of the original one the extension uses the stored info to advice the client if is realy true or if it is scam
 
-Supported browsers:
+## Supported browsers:
 
 * [Firefox Add-on](https://github.com/arrase/HSVerify-Firefox)
 * [Tor Browser Add-on](https://github.com/arrase/HSVerify-Firefox)
@@ -51,13 +51,15 @@ Instructions for unsupported browsers:
 
 * [Internet Explorer](https://github.com/arrase/TOR-Hidden-Service-Verification/wiki/Install-a-decent-browser)
 
-## Future:
+## Developers: 
 
-A way to automatically maintain a list of trusted mirrors for help user to reconnect if one mirror is offline
-
-## Developers: Adding support to Hidden Service Verification to your client
+Adding support to Hidden Service Verification to your client:
 
 If you are developing a client for a Tor hidden service you will find instructions to add support for the verification of the domain to your application in the [wiki](https://github.com/arrase/TOR-Hidden-Service-Verification/wiki)
+
+## Install:
+
+All you need to know is [here](https://github.com/arrase/TOR-Hidden-Service-Verification/wiki).
 
 ## Be a contributor:
 
