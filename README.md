@@ -44,6 +44,7 @@ In short:
 Supported browsers:
 
 * [Firefox Add-on](https://github.com/arrase/HSVerify-Firefox)
+- [Chrome Add-on](https://github.com/arrase/HSVerify-Chrome)
 
 ## Future:
 
