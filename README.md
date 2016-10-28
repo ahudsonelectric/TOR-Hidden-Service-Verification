@@ -55,6 +55,10 @@ Instructions for unsupported browsers:
 
 A way to automatically maintain a list of trusted mirrors for help user to reconnect if one mirror is offline
 
+## Developers: Adding support to Hidden Service Verification to your client
+
+If you are developing a client for a Tor hidden service you will find instructions to add support for the verification of the domain to your application in the [wiki](https://github.com/arrase/TOR-Hidden-Service-Verification/wiki)
+
 ## Be a contributor:
 
 A project like this is very hard in terms of amount of work so if you think that project is something good for the community feel free to collaborate with code or with BTC.
