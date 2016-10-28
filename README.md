@@ -44,7 +44,12 @@ In short:
 Supported browsers:
 
 * [Firefox Add-on](https://github.com/arrase/HSVerify-Firefox)
-- [Chrome Add-on](https://github.com/arrase/HSVerify-Chrome)
+* [Tor Browser Add-on](https://github.com/arrase/HSVerify-Firefox)
+* [Chrome Add-on](https://github.com/arrase/HSVerify-Chrome)
+
+Not supported browser instructions:
+
+* [Internet Explorer](https://github.com/arrase/TOR-Hidden-Service-Verification/wiki/Install-a-decent-browser)
 
 ## Future:
 
