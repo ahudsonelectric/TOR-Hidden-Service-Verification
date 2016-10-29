@@ -20,7 +20,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # Sign the services
-    if args.json:
+    if args.sign:
         auth = AuthFile()
         auth.sign()
         sys.exit(0)
