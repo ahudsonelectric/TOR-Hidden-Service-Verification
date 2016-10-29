@@ -63,12 +63,22 @@ class AuthFile:
         # Write signature
         try:
             signature = self._gpg.sign(host, default_key=self._config.gpg_keyid(), clearsign=True, passphrase=pw)
+            if (len(signature.__str__()) < 1):
+                print ("The signing process has failed.")
+                sys.exit(1)
+        except:
+            print ("The signing process has failed: exception raised")
+            sys.exit(1)
+
+        try:
             fd = open(signature_path, "w")
             fd.write(signature.__str__())
             fd.close()
             os.chown(signature_path, user[2], user[3])
         except:
             print ("Fail when create: %s" % signature_path)
-            sys.exit(1)
 
         print ("The domain has been signed, now you can start the daemon")
+        print ("Signed file path : %s" % signature_path)
+        print ('Content of the signed file :')
+        print signature.__str__()
