@@ -4,7 +4,7 @@ from sys import exit
 
 
 class Config:
-    _config_file = '/etc/HSVerifyd.conf'
+    _config_file = '/etc/hsverifyd.conf'
 
     _challenge_port = None
     _hidden_services = None
@@ -14,9 +14,9 @@ class Config:
     _signed_file = None
 
     def __init__(self):
-        config = ConfigParser.ConfigParser()
-        config.readfp(open(self._config_file))
         try:
+            config = ConfigParser.ConfigParser()
+            config.readfp(open(self._config_file))
             self._challenge_port = config.getint('network', 'challenge_port')
             self._hidden_services = json.loads(config.get('network', 'hidden_services'))
             self._server_password = config.get('network', 'tor_password')
