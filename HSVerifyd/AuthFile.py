@@ -73,12 +73,13 @@ class AuthFile:
         try:
             fd = open(signature_path, "w")
             fd.write(signature.__str__())
+            fd.truncate()
             fd.close()
             os.chown(signature_path, user[2], user[3])
         except:
             print ("Fail when create: %s" % signature_path)
 
-        print ("The domain has been signed, now you can start the daemon")
         print ("Signed file path : %s" % signature_path)
         print ('Content of the signed file :')
         print signature.__str__()
+        print ("The domain has been signed, now you can start the daemon")
