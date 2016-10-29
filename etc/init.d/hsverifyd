@@ -14,7 +14,7 @@ PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin
 . /lib/lsb/init-functions
 
 DAEMON=/usr/sbin/hsverifyd
-PID=/var/run/hsverifyd.pid
+PID=/var/run/HSVerifyd.pid
 
 test -x $DAEMON || exit 5
 
