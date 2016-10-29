@@ -157,11 +157,12 @@ class Daemonize:
             sys.exit(1)
         self._hs.set_own(self._config.challenge_port())
         self._hs.bind(self._config.hidden_services())
-        self._hs.close()
 
         if not os.path.isfile(self._hs.get_data_dir() + "/HSVerifyd.asc"):
             self._log.error("Signature file does not exists")
             exit(2)
+
+        self._hs.close()
 
         # Setup class
         ChallengeThread.gpg_keyid = self._config.gpg_keyid()
