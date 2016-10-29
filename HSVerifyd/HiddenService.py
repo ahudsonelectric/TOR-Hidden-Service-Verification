@@ -32,6 +32,10 @@ class HiddenService:
     def get_data_dir(self):
         return os.path.join(self._controller.get_conf('DataDirectory', '/tmp'), 'HSVerifyd')
 
+    def remove_bind(self, hidden_services):
+        for service in hidden_services:
+            self._controller.remove_hidden_service(self.get_data_dir(), service[1])
+
     def remove_own(self):
         self._controller.remove_hidden_service(self.get_data_dir(), 111)
 
