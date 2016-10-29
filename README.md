@@ -1,7 +1,5 @@
 # TOR Hidden Service Verification (Daemon)
 
-### ...WORK IN PROGRESS
-
 ## The problem:
 
 Many sites at TOR network have multiple mirrors for support their user load.
