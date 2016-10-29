@@ -81,5 +81,5 @@ class AuthFile:
 
         print ("Signed file path : %s" % signature_path)
         print ('Content of the signed file :')
-        print signature.__str__()
+        print (signature.__str__())
         print ("The domain has been signed, now you can start the daemon")
