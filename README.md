@@ -49,15 +49,15 @@ Instructions for unsupported browsers:
 
 * [Internet Explorer](https://github.com/arrase/TOR-Hidden-Service-Verification/wiki/Install-a-decent-browser)
 
+## Install:
+
+All you need to know is [here](https://github.com/arrase/TOR-Hidden-Service-Verification/wiki).
+
 ## Developers: 
 
 Adding support to Hidden Service Verification to your client:
 
 If you are developing a client for a Tor hidden service you will find instructions to add support for the verification of the domain to your application in the [wiki](https://github.com/arrase/TOR-Hidden-Service-Verification/wiki)
-
-## Install:
-
-All you need to know is [here](https://github.com/arrase/TOR-Hidden-Service-Verification/wiki).
 
 ## Be a contributor:
 
