@@ -15,7 +15,7 @@ class AuthFile:
         self._log = Logger()
         self._config = Config()
         self._hs = HiddenService(self._log)
-        self._gpg = gnupg.GPG(homedir=pwd.getpwuid(os.getuid()).pw_dir + self._config.gpg_keyring(),
+        self._gpg = gnupg.GPG(homedir=pwd.getpwuid(os.getuid()).pw_dir + '/' + self._config.gpg_keyring(),
                               keyring=self._config.gpg_pub_ring(),
                               secring=self._config.gpg_private_ring())
 
@@ -58,13 +58,14 @@ class AuthFile:
             sys.exit(1)
 
         # Read key password
-        pw = getpass.getpass("Enter GPG password :")
+        pw = getpass.getpass("Enter GPG password : ")
 
         # Write signature
         try:
             signature = self._gpg.sign(host, default_key=self._config.gpg_keyid(), clearsign=True, passphrase=pw)
             fd = open(signature_path, "w")
             fd.write(signature.__str__())
+            fd.close()
             os.chown(signature_path, user[2], user[3])
         except:
             print ("Fail when create: %s" % signature_path)
