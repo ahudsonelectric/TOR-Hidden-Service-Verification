@@ -155,18 +155,19 @@ class Daemonize:
         # Start hidden services
         if not self._hs.connect(self._config.server_password()):
             sys.exit(1)
+            
         self._hs.set_own(self._config.challenge_port())
         self._hs.bind(self._config.hidden_services())
+        signed_file = self._hs.get_data_dir() + "/HSVerifyd.asc"
+        self._hs.close()
 
-        if not os.path.isfile(self._hs.get_data_dir() + "/HSVerifyd.asc"):
+        if not os.path.isfile(signed_file):
             self._log.error("Signature file does not exists")
             exit(2)
 
-        self._hs.close()
-
         # Setup class
         ChallengeThread.gpg_keyid = self._config.gpg_keyid()
-        ChallengeThread.signed_file_path = self._hs.get_data_dir() + "/HSVerifyd.asc"
+        ChallengeThread.signed_file_path = signed_file
 
         # Run auth server
         try:
