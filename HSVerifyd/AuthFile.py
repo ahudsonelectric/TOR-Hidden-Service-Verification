@@ -1,3 +1,4 @@
+import getpass
 import os.path
 import pwd
 import sys
@@ -14,7 +15,9 @@ class AuthFile:
         self._log = Logger()
         self._config = Config()
         self._hs = HiddenService(self._log)
-        self._gpg = gnupg.GPG()
+        self._gpg = gnupg.GPG(homedir=pwd.getpwuid(os.getuid()).pw_dir + self._config.gpg_keyring(),
+                              keyring=self._config.gpg_pub_ring(),
+                              secring=self._config.gpg_private_ring())
 
     def sign(self):
         # Start hidden services
@@ -42,8 +45,10 @@ class AuthFile:
             with open(hostname_path, 'r') as hostname:
                 host = hostname.read().replace('\n', '')
         except IOError:
-            print("No such file or directory: " + hostname_path)
+            print("No such file or directory: %s" % hostname_path)
             sys.exit(1)
+
+        print ("Your domain is : %s" % host)
 
         # Get user data
         try:
@@ -52,9 +57,14 @@ class AuthFile:
             print ("User does not exists: %s" % self._config.run_as())
             sys.exit(1)
 
+        # Read key password
+        pw = getpass.getpass("Enter GPG password :")
+
         # Write signature
         try:
-            self._gpg.sign(host, output=signature_path)
+            signature = self._gpg.sign(host, default_key=self._config.gpg_keyid(), clearsign=True, passphrase=pw)
+            fd = open(signature_path, "w")
+            fd.write(signature.__str__())
             os.chown(signature_path, user[2], user[3])
         except:
             print ("Fail when create: %s" % signature_path)

@@ -12,6 +12,9 @@ class Config:
     _server_password = None
     _gpg_keyid = None
     _signed_file = None
+    _gpg_keyring = None
+    _gpg_pub_ring = None
+    _gpg_private_ring = None
 
     def __init__(self):
         try:
@@ -22,6 +25,9 @@ class Config:
             self._server_password = config.get('network', 'tor_password')
             self._run_as = config.get('system', 'run_as')
             self._gpg_keyid = config.get('gpg', 'keyid')
+            self._gpg_keyring = config.get('gpg', 'keyring_dir')
+            self._gpg_pub_ring = config.get('gpg', 'pub_ring')
+            self._gpg_private_ring = config.get('gpg', 'private_ring')
         except ConfigParser.NoOptionError:
             print "Error reading config file."
             exit(2)
@@ -40,6 +46,15 @@ class Config:
 
     def gpg_keyid(self):
         return self._gpg_keyid
+
+    def gpg_keyring(self):
+        return self._gpg_keyring
+
+    def gpg_pub_ring(self):
+        return self._gpg_pub_ring
+
+    def gpg_private_ring(self):
+        return self._gpg_private_ring
 
     def set_signed_file(self, path):
         self._signed_file = path
