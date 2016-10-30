@@ -37,10 +37,10 @@ class HiddenService:
             self._controller.remove_hidden_service(self.get_data_dir(), service[1])
 
     def remove_own(self):
-        self._controller.remove_hidden_service(self.get_data_dir(), 111)
+        self._controller.remove_hidden_service(self.get_data_dir(), 8888)
 
     def set_own(self, challenge_port):
-        self._controller.create_hidden_service(self.get_data_dir(), 111, target_port=challenge_port)
+        self._controller.create_hidden_service(self.get_data_dir(), 8888, target_port=challenge_port)
 
     def bind(self, hidden_services):
         for service in hidden_services:
