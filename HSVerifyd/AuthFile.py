@@ -62,7 +62,9 @@ class AuthFile:
 
         # Write signature
         try:
-            signature = self._gpg.sign(host, default_key=self._config.gpg_keyid(), clearsign=True, passphrase=pw)
+            signature = self._gpg.sign(host, default_key=self._config.gpg_keyid(), clearsign=True, passphrase=pw,
+                                       detach=True)
+
             if (len(signature.__str__()) < 1):
                 print ("The signing process has failed.")
                 sys.exit(1)

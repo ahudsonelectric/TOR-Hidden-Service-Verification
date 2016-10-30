@@ -158,7 +158,12 @@ class Daemonize:
 
         self._hs.set_own(self._config.challenge_port())
         self._hs.bind(self._config.hidden_services())
-        signed_file = self._hs.get_data_dir() + "/HSVerifyd.asc"
+
+        # Setup paths
+        data_dir = self._hs.get_data_dir()
+        hostname_path = data_dir + "/hostname"
+        signed_file = data_dir + "/HSVerifyd.asc"
+
         self._hs.close()
 
         if not os.path.isfile(signed_file):
@@ -168,6 +173,14 @@ class Daemonize:
         # Setup class
         ChallengeThread.gpg_keyid = self._config.gpg_keyid()
         ChallengeThread.signed_file_path = signed_file
+
+        # Read hostname
+        try:
+            with open(hostname_path, 'r') as hostname:
+                ChallengeThread.hostname = hostname.read().replace('\n', '')
+        except IOError:
+            self._log.error("No such file or directory: %s" % hostname_path)
+            sys.exit(1)
 
         # Run auth server
         try:
