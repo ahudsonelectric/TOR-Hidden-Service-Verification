@@ -15,7 +15,7 @@ class ChallengeThread(BaseHTTPRequestHandler):
         self.send_response(200)
 
         # If request is challenge
-        if data.has_key("challenge") and data["hello"] == "HSVerifyd":
+        if data.has_key("challenge") and data["challenge"] == "HSVerifyd":
             f = open(self.signed_file_path)
             response = f.read()
             f.close()
