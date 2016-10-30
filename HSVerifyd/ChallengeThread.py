@@ -17,18 +17,20 @@ class ChallengeThread(BaseHTTPRequestHandler):
         data = json.loads(request_str)
 
         # If request is challenge
-        if data.has_key("challenge") and data["challenge"] == "HSVerifyd":
-            response['host'] = self.hostname
-            response['gpg_id'] = self.gpg_keyid
-            f = open(self.signed_file_path)
-            response['signature'] = f.read()
-            f.close()
+        if data.has_key("HSVerifyd") and data["HSVerifyd"] == "challenge":
+            try:
+                f = open(self.signed_file_path)
+                response['signature'] = f.read()
+                f.close()
+                response['host'] = self.hostname
+                response['gpg_id'] = self.gpg_keyid
+            except:
+                response['HSVerifyd'] = False
         else:
             # If request is Unknown
-            response['status'] = False
+            response['HSVerifyd'] = False
 
         self.send_response(200)
+        self.send_header('Content-Type', 'application/json')
         self.end_headers()
         self.wfile.write(json.dumps(response))
-
-        return
