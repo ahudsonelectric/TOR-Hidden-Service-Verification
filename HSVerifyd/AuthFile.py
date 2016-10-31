@@ -62,19 +62,21 @@ class AuthFile:
 
         # Write signature
         try:
-            signature = self._gpg.sign(host, default_key=self._config.gpg_keyid(), clearsign=True, passphrase=pw,
-                                       detach=True)
-
-            if (len(signature.__str__()) < 1):
-                print ("The signing process has failed.")
-                sys.exit(1)
+            signature = self._gpg.sign(host, default_key=self._config.gpg_keyid(), passphrase=pw, detach=True,
+                                       clearsign=False)
         except:
             print ("The signing process has failed: exception raised")
             sys.exit(1)
 
         try:
+            assert signature;
+        except:
+            print ("The signing process has failed.")
+            sys.exit(1)
+
+        try:
             fd = open(signature_path, "w")
-            fd.write(signature.__str__())
+            fd.write(signature.data)
             fd.truncate()
             fd.close()
             os.chown(signature_path, user[2], user[3])
