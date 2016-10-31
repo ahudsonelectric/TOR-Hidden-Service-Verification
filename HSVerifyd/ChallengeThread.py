@@ -5,7 +5,6 @@ from BaseHTTPServer import BaseHTTPRequestHandler
 class ChallengeThread(BaseHTTPRequestHandler):
     gpg_keyid = None
     signed_file_path = None
-    hostname = None
 
     def do_POST(self):
         # Response object
@@ -22,7 +21,6 @@ class ChallengeThread(BaseHTTPRequestHandler):
                 f = open(self.signed_file_path)
                 response['signature'] = f.read()
                 f.close()
-                response['host'] = self.hostname
                 response['gpg_id'] = self.gpg_keyid
             except:
                 response['HSVerifyd'] = False

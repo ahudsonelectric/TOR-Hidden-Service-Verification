@@ -174,14 +174,6 @@ class Daemonize:
         ChallengeThread.gpg_keyid = self._config.gpg_keyid()
         ChallengeThread.signed_file_path = signed_file
 
-        # Read hostname
-        try:
-            with open(hostname_path, 'r') as hostname:
-                ChallengeThread.hostname = hostname.read().replace('\n', '')
-        except IOError:
-            self._log.error("No such file or directory: %s" % hostname_path)
-            sys.exit(1)
-
         # Run auth server
         try:
             self._server = HTTPServer(('127.0.0.1', self._config.challenge_port()), ChallengeThread)
