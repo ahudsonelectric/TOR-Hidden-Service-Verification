@@ -49,7 +49,7 @@ Instructions for unsupported browsers:
 
 * [Internet Explorer](https://github.com/arrase/TOR-Hidden-Service-Verification/wiki/Install-a-decent-browser)
 
-## Install:
+## Daemon Install:
 
 All you need to know is [here](https://github.com/arrase/TOR-Hidden-Service-Verification/wiki).
 
