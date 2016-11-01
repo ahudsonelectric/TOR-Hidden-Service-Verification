@@ -31,6 +31,7 @@ class ChallengeThread(BaseHTTPRequestHandler):
         # Send response
         json_response = json.dumps(response)
         self.send_response(200)
+        self.send_header('Access-Control-Allow-Origin', '*')
         self.send_header('Content-Type', 'application/json')
         self.send_header('Content-length', len(json_response))
         self.end_headers()
