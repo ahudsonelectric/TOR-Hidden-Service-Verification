@@ -38,8 +38,8 @@ In short:
 
 ## Supported browsers:
 
-* [Get for Firefox](https://github.com/arrase/Hidden-Service-Verification-WebExtension)
-* [Get for Google Chrome](https://github.com/arrase/Hidden-Service-Verification-WebExtension)
+* [Get for Firefox](https://github.com/arrase/Hidden-Service-Verification-WebExtension/releases)
+* [Get for Google Chrome](https://github.com/arrase/Hidden-Service-Verification-WebExtension/releases)
 
 Instructions for unsupported browsers:
 
