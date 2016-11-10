@@ -24,12 +24,9 @@ Initialize under the same domain the services listed in the configuration file w
 
 In short:
 
-- Client send: json(hello)
-- Server response: json(gpg_key_id)
-- Client process: do preliminary checks against his db, can stop here if don't trust the site
 - Client send: ask for signed challenge
-- Server response: signed_block(true_domain)
-- Client process: If signature is ok the true_domain should be the right one...it match?
+- Server response: signed_block
+- Client process: If signature is not ok the domain is scam
 
 ## How does the browser add-on work?
 
