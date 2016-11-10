@@ -2,9 +2,7 @@
 
 ## The problem:
 
-Many sites at TOR network have multiple mirrors for support their user load.
-
-When connecting to one of these mirror sites we can have the following question:
+Many sites at TOR network have multiple mirrors, when connecting to one of these mirror sites we can have the following question:
 
 Is this the right place or is a service impersonation?
 
