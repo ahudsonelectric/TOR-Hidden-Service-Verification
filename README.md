@@ -42,7 +42,6 @@ In short:
 ## Supported browsers:
 
 * [Get for Firefox](https://github.com/arrase/Hidden-Service-Verification-WebExtension)
-* [Get for Tor Browser](https://github.com/arrase/Hidden-Service-Verification-WebExtension)
 * [Get for Google Chrome](https://github.com/arrase/Hidden-Service-Verification-WebExtension)
 
 Instructions for unsupported browsers:
