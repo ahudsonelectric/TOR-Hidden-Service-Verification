@@ -36,6 +36,10 @@ In short:
 - The client accepts the data offered from the service to identify mirrors in the future , just clicking on extension icon
 - Next time the client go into a service who claims to be a mirror of the original one the extension uses the stored info to advice the client if is realy true or if it is scam
 
+## Daemon Install:
+
+All you need to know is [here](https://github.com/arrase/TOR-Hidden-Service-Verification/wiki).
+
 ## Supported browsers:
 
 * [Get for Firefox](https://github.com/arrase/Hidden-Service-Verification-WebExtension/releases)
@@ -44,10 +48,6 @@ In short:
 Instructions for unsupported browsers:
 
 * [Internet Explorer](https://github.com/arrase/TOR-Hidden-Service-Verification/wiki/Install-a-decent-browser)
-
-## Daemon Install:
-
-All you need to know is [here](https://github.com/arrase/TOR-Hidden-Service-Verification/wiki).
 
 ## Developers: 
 
