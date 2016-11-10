@@ -45,7 +45,7 @@ All you need to know is [here](https://github.com/arrase/TOR-Hidden-Service-Veri
 
 Instructions for unsupported browsers:
 
-* [Internet Explorer](https://github.com/arrase/TOR-Hidden-Service-Verification/wiki/Install-a-decent-browser)
+* [Internet Explorer](https://github.com/arrase/Hidden-Service-Verification-WebExtension/wiki/Install-a-decent-browser)
 
 ## Developers: 
 
