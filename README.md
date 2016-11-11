@@ -41,7 +41,7 @@ All you need to know is [here](https://github.com/arrase/TOR-Hidden-Service-Veri
 ## Supported browsers:
 
 * [Get for Firefox](https://github.com/arrase/Hidden-Service-Verification-WebExtension/releases)
-* [Get for Google Chrome](https://github.com/arrase/Hidden-Service-Verification-WebExtension/releases)
+* [Get for Tor Browser](https://github.com/arrase/Hidden-Service-Verification-WebExtension/releases)
 
 Instructions for unsupported browsers:
 
